@@ -21,7 +21,7 @@
     - [About](#About)
     - [Database](#Database)
     - [Get Dummy Data](#Get-Dummy-Data)
-    - [What's New?](#whats-new)
+    - [Resource](#Resource)
 
 
 ## About
