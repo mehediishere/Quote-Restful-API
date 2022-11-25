@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#" target="_blank">
-    <img src="https://github.com/mehediishere/All-Markdown-Files/blob/a72317fad158c9fc456f554377383c4659c1ee29/Images/preview_image.jpg" width="100%" alt="preview">
+    <img src="https://github.com/mehediishere/Quote-Restful-API/blob/e6181ff33d2f7259a783c23e391cf65d27e99f2b/public/quotes%20api.png" width="100%" alt="preview">
   </a>
 </p>
 
@@ -14,7 +14,7 @@
 
 </div>
 
-<h1 align="center" style="font-size: 50px;">{{ Quotes }} Restful API</h1>
+<h1 align="center" style="font-size: 50px;">[ Quotes ] Restful API</h1>
 
 ## Navigation
 - [Index](#markdown-navigation)
