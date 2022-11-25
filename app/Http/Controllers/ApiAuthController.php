@@ -11,15 +11,15 @@ class ApiAuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-           'name' => 'required',
-           'email' => 'required|email|unique:users',
-           'password' => 'required|confirmed|min:6|max:20'
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:6|max:20'
         ]);
 
         $user = User::create([
-           'name' => $request->name,
-           'email' => $request->email,
-           'password' => Hash::make($request->password),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
         $token = $user->createToken('api-token')->plainTextToken;
@@ -32,13 +32,14 @@ class ApiAuthController extends Controller
         return response($response, 201);
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6|max:20'
         ]);
         $user = User::firstWhere('email', $request->email);
-        if($user != null && Hash::check($request->password, $user->password)){
+        if ($user != null && Hash::check($request->password, $user->password)) {
             $token = $user->createToken('api-token')->plainTextToken;
             return response([
                 'user' => $user->email,
@@ -48,7 +49,8 @@ class ApiAuthController extends Controller
         return "Invalid credentials!!";
     }
 
-    public function logout(){
+    public function logout()
+    {
         auth('sanctum')->user()->tokens()->delete();
         return "Logged out!!";
     }

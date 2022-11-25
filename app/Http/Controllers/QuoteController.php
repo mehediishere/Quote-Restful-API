@@ -7,21 +7,28 @@ use Illuminate\Http\Request;
 
 class QuoteController extends Controller
 {
-    public function showAll(){
+    public function showAll()
+    {
         return Quote::select('id', 'quote', 'author')->get();
     }
 
-    public function showSingleQuote($id){
+    public function showSingleQuote($id)
+    {
         return Quote::select('id', 'quote', 'author')->where('id', $id)->get();
     }
 
-    public function search($quote){
-        return Quote::select('id', 'quote', 'author')->where('quote', 'like', '%'.$quote.'%')->get();
+    public function search($search)
+    {
+        return Quote::select('id', 'quote', 'author')
+            ->where('quote', 'like', '%' . $search . '%')
+            ->orWhere('author', 'like', '%' . $search . '%')
+            ->get();
     }
 
-    public function newQuote(Request $request){
+    public function newQuote(Request $request)
+    {
         $request->validate([
-           'quote' => 'required',
+            'quote' => 'required',
         ]);
         Quote::create($request->all());
         return response([
@@ -30,7 +37,8 @@ class QuoteController extends Controller
         ]);
     }
 
-    public function updateQuote(Request $request, $id){
+    public function updateQuote(Request $request, $id)
+    {
         $request->validate([
             'quote' => 'required',
         ]);
@@ -42,9 +50,12 @@ class QuoteController extends Controller
         return $quote;
     }
 
-    public function removeQuote($id){
-        Quote::destroy($id);
-        return "Quote deleted!!";
+    public function removeQuote($id)
+    {
+        if (Quote::destroy($id)) {
+            return "Quote removed!!";
+        }
+        return "Quote not found!!";
     }
 
 }

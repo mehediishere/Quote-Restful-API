@@ -31,7 +31,7 @@ Route::controller(\App\Http\Controllers\ApiAuthController::class)->group(functio
 Route::controller(\App\Http\Controllers\QuoteController::class)->group(function (){
    Route::get('/quotes', 'showAll');
    Route::get('/quotes/{id}', 'showSingleQuote');
-   Route::get('/quotes/search/{quote}', 'search');
+   Route::get('/quotes/search/{search}', 'search');
 
    Route::middleware('auth:sanctum')->group(function (){
        Route::post('/quotes', 'newQuote');
